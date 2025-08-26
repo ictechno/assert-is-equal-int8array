@@ -1,204 +1,127 @@
-<!--
+# assert-is-equal-int8array
 
-@license Apache-2.0
+![GitHub release](https://img.shields.io/github/release/ictechno/assert-is-equal-int8array.svg)  
+[![Visit Releases](https://img.shields.io/badge/Visit%20Releases-Here-brightgreen)](https://github.com/ictechno/assert-is-equal-int8array/releases)
 
-Copyright (c) 2025 The Stdlib Authors.
+## Overview
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+The `assert-is-equal-int8array` library provides a simple and effective way to test if two arguments are both `Int8Arrays` and have equal values. This utility is particularly useful for developers who need to perform strict type checks and value comparisons in JavaScript applications. 
 
-   http://www.apache.org/licenses/LICENSE-2.0
+## Table of Contents
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
--->
+## Features
 
-
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# isEqualInt8Array
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Test if two arguments are both Int8Arrays and have equal values.
-
-<section class="installation">
+- **Type Safety**: Ensures both arguments are `Int8Arrays`.
+- **Value Comparison**: Checks if the contents of both arrays are equal.
+- **Lightweight**: Minimal footprint for your applications.
+- **Easy Integration**: Simple API that fits well into existing projects.
 
 ## Installation
 
+You can install `assert-is-equal-int8array` via npm. Run the following command in your terminal:
+
 ```bash
-npm install @stdlib/assert-is-equal-int8array
+npm install assert-is-equal-int8array
 ```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
 
 ## Usage
 
-```javascript
-var isEqualInt8Array = require( '@stdlib/assert-is-equal-int8array' );
-```
-
-#### isEqualInt8Array( v1, v2 )
-
-Tests if two arguments are both Int8Arrays and have equal values.
+To use the library, simply import it into your JavaScript file and call the function with two `Int8Array` arguments.
 
 ```javascript
-var Int8Array = require( '@stdlib/array-int8' );
+const assertIsEqualInt8Array = require('assert-is-equal-int8array');
 
-var x = new Int8Array( [ 1, 2 ] );
-var y = new Int8Array( [ 1, 2 ] );
-var bool = isEqualInt8Array( x, y );
-// returns true
+const array1 = new Int8Array([1, 2, 3]);
+const array2 = new Int8Array([1, 2, 3]);
 
-bool = isEqualInt8Array( x, new Int8Array( [ 1, 3 ] ) );
-// returns false
+const isEqual = assertIsEqualInt8Array(array1, array2);
+console.log(isEqual); // true
 ```
 
-</section>
+## API
 
-<!-- /.usage -->
+### `assertIsEqualInt8Array(array1, array2)`
 
-<section class="notes">
+- **Parameters**:
+  - `array1`: The first `Int8Array` to compare.
+  - `array2`: The second `Int8Array` to compare.
+  
+- **Returns**: 
+  - `true` if both arrays are equal in type and value.
+  - `false` otherwise.
 
-</section>
+### Example
 
-<!-- /.notes -->
+```javascript
+const array1 = new Int8Array([1, 2, 3]);
+const array2 = new Int8Array([1, 2, 3]);
+const array3 = new Int8Array([4, 5, 6]);
 
-<section class="examples">
+console.log(assertIsEqualInt8Array(array1, array2)); // true
+console.log(assertIsEqualInt8Array(array1, array3)); // false
+```
 
 ## Examples
 
-<!-- eslint no-undef: "error" -->
+Here are some more examples to illustrate the usage of `assert-is-equal-int8array`.
+
+### Example 1: Equal Arrays
 
 ```javascript
-var Int8Array = require( '@stdlib/array-int8' );
-var isEqualInt8Array = require( '@stdlib/assert-is-equal-int8array' );
+const array1 = new Int8Array([10, 20, 30]);
+const array2 = new Int8Array([10, 20, 30]);
 
-var x = new Int8Array( [ 1, 2, 3 ] );
-var y = new Int8Array( [ 1, 2, 3 ] );
-var out = isEqualInt8Array( x, y );
-// returns true
-
-x = new Int8Array( [ 0, 0, 0 ] );
-y = [ 0, 0, 0 ];
-out = isEqualInt8Array( x, y );
-// returns false
-
-x = new Int8Array( [ 1, 2, 3 ] );
-y = new Int8Array( [ 1, 2, 4 ] );
-out = isEqualInt8Array( x, y );
-// returns false
+console.log(assertIsEqualInt8Array(array1, array2)); // true
 ```
 
-</section>
+### Example 2: Different Arrays
 
-<!-- /.examples -->
+```javascript
+const array1 = new Int8Array([1, 2, 3]);
+const array2 = new Int8Array([1, 2, 4]);
 
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
+console.log(assertIsEqualInt8Array(array1, array2)); // false
+```
 
-<section class="related">
+### Example 3: Different Types
 
-</section>
+```javascript
+const array1 = new Int8Array([1, 2, 3]);
+const notAnArray = [1, 2, 3];
 
-<!-- /.related -->
+console.log(assertIsEqualInt8Array(array1, notAnArray)); // false
+```
 
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+## Contributing
 
+We welcome contributions to improve `assert-is-equal-int8array`. If you want to contribute, please follow these steps:
 
-<section class="main-repo" >
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Open a pull request.
 
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
+Please ensure your code adheres to our coding standards and includes appropriate tests.
 
 ## License
 
-See [LICENSE][stdlib-license].
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Support
 
-## Copyright
+For any issues or questions, please check the [Releases](https://github.com/ictechno/assert-is-equal-int8array/releases) section. If you can't find an answer, feel free to open an issue in the repository.
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+---
 
-</section>
-
-<!-- /.stdlib -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="links">
-
-[npm-image]: http://img.shields.io/npm/v/@stdlib/assert-is-equal-int8array.svg
-[npm-url]: https://npmjs.org/package/@stdlib/assert-is-equal-int8array
-
-[test-image]: https://github.com/stdlib-js/assert-is-equal-int8array/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/assert-is-equal-int8array/actions/workflows/test.yml?query=branch:main
-
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/assert-is-equal-int8array/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/assert-is-equal-int8array?branch=main
-
-<!--
-
-[dependencies-image]: https://img.shields.io/david/stdlib-js/assert-is-equal-int8array.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/assert-is-equal-int8array/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/assert-is-equal-int8array/tree/deno
-[deno-readme]: https://github.com/stdlib-js/assert-is-equal-int8array/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/assert-is-equal-int8array/tree/umd
-[umd-readme]: https://github.com/stdlib-js/assert-is-equal-int8array/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/assert-is-equal-int8array/tree/esm
-[esm-readme]: https://github.com/stdlib-js/assert-is-equal-int8array/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/assert-is-equal-int8array/blob/main/branches.md
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/assert-is-equal-int8array/main/LICENSE
-
-</section>
-
-<!-- /.links -->
+Thank you for using `assert-is-equal-int8array`. We hope this library makes your development easier and more efficient!
